@@ -1,0 +1,56 @@
+/********************************************************
+CHART WITH 1 AGGREGATION
+data -> title,aggregation1(agg1,metric1)
+********************************************************/
+
+[
+  {
+    "title": "chart name",
+    "aggregation1": [
+      {"agg1": "agg name","metric1": 00},
+      {"agg1": "agg name","metric1": 00}
+    ]
+  },
+  {
+    "title": "chart name",
+    "aggregation1": [
+      {"agg1": "agg name","metric1": 00},
+      {"agg1": "agg name","metric1": 00},
+      {"agg1": "agg name","metric1": 00}
+    ]
+  }
+]
+
+
+/********************************************************
+CHART WITH 2 AGGREGATIONS
+data -> title,aggregation1(agg1,metric1),aggregation2(agg2,metric2)
+********************************************************/
+ 
+ .....
+
+
+/********************************************************
+CHART WITH 3 VALUES
+data -> title,hex color,metric1,metric2
+********************************************************/
+
+[
+  {
+    "title": "chart name",
+    "color": "#000000",
+    "name1":"metric name",
+    "metric1":00,
+    "name2":"metric name",
+    "metric2":00
+  },
+  {
+    "title": "chart name",
+    "color": "#000000",
+    "name1":"metric name",
+    "metric1":00,
+    "name2":"metric name",
+    "metric2":00
+  }
+]
+

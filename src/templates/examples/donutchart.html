@@ -1,0 +1,46 @@
+{% extends "content_simple.html" %}
+
+{% block head %}
+  <link href="{{url_for('visualizations.static', filename='visualizations.css')}}" type="text/css" rel="stylesheet">
+{% endblock head %}
+
+{% block form %}
+	<form action="" method="post">
+{% endblock form %}
+
+
+{% block title %}
+	<h3>Donut Chart Example</h3>
+{% endblock title %}
+
+
+{% block content %}
+
+	<h3>Dynamic number of donut charts with d3js</h3>
+		
+{% endblock content %}
+
+
+{% block content2 %}
+
+	{% for donutchart in donutcharts %}
+		<h5>Visualization: {{donutchart['id']}}</h5><hr>
+		<div id="{{ donutchart['id'] }}" class="text-center"></div>
+	{% endfor %}
+	
+
+{% endblock content2 %}
+	
+
+{% block end_form %}
+	</form>
+{% endblock end_form %}
+
+
+{% block js_footer %}
+
+	<script>	let donutcharts = '{{donutcharts|tojson|safe}}'; </script>
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script src="{{url_for('visualizations.static', filename='donutchart.js')}}"></script>
+
+{% endblock js_footer %}

@@ -1,0 +1,98 @@
+{% extends "content_simple.html" %}
+
+{% block head %}
+	<script src="{{url_for('static', filename='js/splunkjs/config.js')}}"></script>
+{% endblock head %}
+
+
+{% block title %}
+	<h3>Splunk Test Visualization</h3>
+{% endblock title %}
+
+
+{% block content %}
+
+	<br>
+	<h3>Visualization with Javascript Splunk Stack</h3>
+	<br>
+
+	<p>A chart and an events viewer displaying results of a search</p>
+    <div id="mychart"></div>
+    <div id="myeventsviewer"></div>
+
+    
+	<script>
+    // Configure SplunkJS Stack
+    splunkjs.config({
+      proxyPath: "",
+      scheme: "http",
+      host: "10.1.5.107",
+      port: 8089,
+      authenticate: function (done) {
+        require([
+          "jquery",
+          "jquery.cookie"
+        ], function ($) {
+          // Retrieve the session key and username from cookies
+          var splunkSessionKey = $.cookie("splunk_sessionkey");
+          var splunkCurrentUser = $.cookie("splunk_username");
+
+          // Log in using the session key and username
+          if (splunkSessionKey) {
+            done(null, {
+              sessionKey: splunkSessionKey,
+              username: splunkCurrentUser
+            });
+          }
+          // If there is no session key, redirect to the login form
+          else {
+            window.location.replace("login_form.html");
+          }
+        });
+      }
+    });
+
+    // Configure the web site's base URL
+    require.config({
+        baseUrl: "http://localhost:5000/"
+    });
+
+    // Set up the Web Framework components
+    var deps = [
+        "splunkjs/ready!",
+        "splunkjs/mvc/searchmanager",
+        "splunkjs/mvc/chartview",
+        "splunkjs/mvc/eventsviewerview"
+    ];
+    require(deps, function (mvc) {
+        // Load individual components
+        var SearchManager = require("splunkjs/mvc/searchmanager");
+        var ChartView = require("splunkjs/mvc/chartview");
+        var EventsViewerView = require("splunkjs/mvc/eventsviewerview");
+
+        // Instantiate the views and search manager
+        var mysearch = new SearchManager({
+            id: "search1",
+            preview: true,
+            cache: true,
+            status_buckets: 300,
+            search: "index=_internal | head 1000 | stats count by sourcetype"
+        });
+
+        var mychart = new ChartView({
+            id: "chart1",
+            managerid: "search1",
+            type: "bar",
+            el: $("#mychart")
+        }).render();
+
+        var myeventsviewer = new EventsViewerView({
+            id: "eviewer1",
+            managerid: "search1",
+            el: $("#myeventsviewer")
+        }).render();
+    });
+    </script>
+
+
+{% endblock content %}

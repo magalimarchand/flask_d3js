@@ -1,0 +1,25 @@
+{% extends "content_simple.html" %}
+
+
+{% block title %}
+	<h3>Splunk Test Connection</h3>
+{% endblock title %}
+
+
+{% block content %}
+
+	<br>
+	<h3>Connection to Inmind's Splunk dev installation</h3>
+	<br>
+
+	
+	<p>Simple test to connect the implemented Splunk SDK from this app to Inmind's Splunk local installation. <br><br>
+
+	<b>List of indexes: </b><br>
+	{% for index in data %}
+	- {{ index }}<br>
+	{% endfor %}
+
+	
+
+{% endblock content %}

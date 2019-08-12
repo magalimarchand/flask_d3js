@@ -1,0 +1,33 @@
+{% extends "content_simple.html" %}
+
+{% block head %}
+  <style>svg {font: 10px sans-serif;}</style>
+{% endblock head %}
+
+
+{% block title %}
+	<h3>Splunk Test Visualization 2</h3>
+{% endblock title %}
+
+
+{% block content %}
+
+	<br>
+	<h3>Visualization with d3js and CSV</h3>
+	<br> <br>
+  <p>Gets the total size in megabytes of data stored for each index.
+  <br><br>
+  <b>List of indexes and their size: </b><br>
+  
+  </p>
+  <div id="multiple_donuts" class="text-center"></div>
+ 
+
+{% endblock content %}
+
+{% block js_footer %}
+
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="{{url_for('static', filename='js/script.js')}}"></script>
+
+{% endblock js_footer %}

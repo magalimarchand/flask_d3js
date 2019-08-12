@@ -1,0 +1,50 @@
+{% extends "content_simple.html" %}
+
+{% block title %}
+	<h3>Elasticsearch Overview</h3>
+{% endblock title %}
+
+
+{% block content %}
+
+	<br>
+	<h3>Elasticsearch Cluster Monitoring with d3js</h3>
+	<br>
+
+	<p>D3js gauge data from the the local server's Elasticsearch Cluster. <br>
+	Dynamic visualization with: <br>
+	- Cluster name<br>
+	- Status color of the cluster (green, yellow, red)<br>
+	-	Number of primary shards / total active shards</p>
+
+	<!-- D3JS BARCHART  -->
+  <div class="row">
+  	<div class="col-md-2"></div>
+    <div class="col-md-8 width"> 
+      <br>
+      <div id="gauge"></div>
+			<input type="hidden" class="hidden" value="{{data|tojson}}" />
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+
+	<script>	
+		var cluster = '{{data|tojson|safe}}'; console.log(cluster);
+	</script>
+	
+
+	<br><br>
+	<h3>Elasticsearch Cluster Monitoring with Kibana</h3>
+	<br>
+
+	<p>Embeded Kibana Monitoring Dashboard of the local server's Elasticsearch Cluster</p>
+
+	<iframe src="http://10.1.5.141:5601/app/monitoring#/overview?_g=(cluster_uuid:qfgfLlU9QZqMPSgIwB25Ag)" height="500" width="1000"></iframe>
+
+{% endblock content %}
+
+{% block js_footer %}
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="https://d3js.org/d3-selection-multi.v0.4.min.js"></script>
+	<script src="{{url_for('static', filename='js/cluster_gauge.js')}}"></script>
+{% endblock js_footer %}

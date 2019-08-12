@@ -1,0 +1,62 @@
+{% extends "content_sidebar.html" %}
+
+{% block form %}
+	<form action="" method="post">{{ form.hidden_tag() }}
+{% endblock form %}
+
+
+{% block title %}
+	<h3>Elasticsearch + d3js barchart</h3>
+{% endblock title %}
+
+{% block sidebar %}
+
+		{{ form.period.label(style="font-weight:bold;margin-right:10px") }}
+		{{ form.period(**{"onchange":"this.form.submit()"}) }}
+		<br>
+		{{ form.division.label(style="font-weight:bold;margin-right:10px") }}
+		{{ form.division(**{"onchange":"this.form.submit()"}) }}
+
+{% endblock sidebar %}
+
+
+{% block content %}
+
+	<p>Visualization of Inmind Technologies employees and their hours worked, filtered by period and division.
+	Data extracted from the Open Air database, ingested in Elasticsearch with Logstash, retrieved in the application with the elasticsearch.py ​​API and visualized with the d3js library.</p>
+		
+
+{% endblock content %}
+
+
+{% block content2 %}
+	
+
+	<!-- D3JS BARCHART  -->
+  <div class="row">
+    <div class="col-md-12 width12"> 
+      <br><br>
+      <div id="barchart"></div>
+			<input type="hidden" class="hidden" value="{{data|tojson}}" />
+    </div>
+  </div>
+
+	<script>	
+		let users_list = '{{data|tojson|safe}}';
+	</script>
+
+{% endblock content2 %}
+	
+
+{% block end_form %}
+	</form>
+{% endblock end_form %}
+
+
+{% block js_footer %}
+
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="https://d3js.org/d3-selection-multi.v0.4.min.js"></script>
+	<script src="{{url_for('static', filename='js/cdae_barchart.js')}}"></script>
+
+{% endblock js_footer %}

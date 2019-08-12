@@ -1,0 +1,22 @@
+{% extends "content_simple.html" %}
+
+{% block title %}
+	<h3>Centreon Test Connection</h3>
+{% endblock title %}
+
+
+{% block content %}
+
+	<br>
+	<h3>Connection to Magali's Centreon dev installation</h3>
+	<br><br><br>
+
+
+	<p>Simple test to connect the implemented Centreon SDK from this app to Magali's Centreon local  installation. <br><br>
+
+	<b>List of hosts: </b><br>
+	{% for host in data %}
+	- {{ host }}<br>
+	{% endfor %}
+
+{% endblock content %}

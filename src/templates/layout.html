@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<style>
+
+</style>
+	<link href="{{url_for('static', filename='main.css')}}" type="text/css" rel="stylesheet">
+	<link rel="shortcut icon" type="image/x-icon" href="{{url_for('static', filename='images/logo-240x240.png')}}"/>
+
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="{{url_for('static', filename='js/main.js')}}"></script>
+	
+	<title>{{ title }}</title>
+
+	{% block head %}
+	{% endblock head %}
+</head>
+<body id="content_custom">
+
+<header class="site-header">
+	<nav class="navbar navbar-expand-md navbar-dark bg-nav sticky-top" id="navbar">
+		<a class="active" href="{{url_for('main.home')}}">
+		<img class="img-responsive pull-left" style="height:2.5rem;"
+			src="{{url_for('static', filename='images/logo-240x240.png')}}"
+			alt="logo"/>
+		<span class="navbar-caption-wrap"><a class="navbar-caption rubik bold" href="{{url_for('main.home')}}" style="font-size:1.2rem;">&nbsp; Mind in a Box™ </a>
+		</span>
+	</a>
+	<div class="navbar-toggler-right">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".nav_bar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav_sidebar">
+		<span class="navbar-toggler-icon nav_icon"></span>
+	</button>
+	</div>
+	<div class="collapse navbar-collapse flex-column nav_bar">
+	<!-- TOP NAVBAR -->
+	<ul class="navbar-nav pl-5 nav_content mr-auto rubik">
+		<li class="nav-item mx-4">
+			<a class="nav-link" href="{{url_for('hardware.monitoring')}}">HARDWARE</a>
+		</li>
+		<li class="nav-item mx-4">
+			<a class="nav-link" href="{{url_for('elastic.monitoring')}}">ELASTICSEARCH</a>
+		</li>
+		<li class="nav-item mx-4">
+			<a class="nav-link" href="{{url_for('splunk.test')}}">SPLUNK</a>
+		</li>
+		<li class="nav-item mx-4">
+			<a class="nav-link" href="{{url_for('centreon.test')}}">CENTREON</a>
+		</li>
+	</ul>
+	<!-- BOTTOM NAVBAR -->
+	<ul class="navbar-nav pl-5 nav_content mr-auto rubik">
+		<li class="nav-item mx-4">
+			<a class="nav-link" href="#">MICROSOFT DYNAMICS</a>
+		</li>
+		<li class="nav-item mx-4">
+			<a class="nav-link" href="#">UNITY/VR</a>
+		</li>
+		<li class="nav-item mx-4">
+			<a class="nav-link" href="{{url_for('main.documentation')}}">DOCUMENTATION</a>
+		</li>
+		<li class="nav-item mx-4">
+			<a class="nav-link" href="{{url_for('examples.donutchart')}}">EXAMPLES</a>
+		</li>
+	</ul>
+	</div>
+	<!-- LOGIN -->
+	<div>
+		<ul class="collapse navbar-collapse nav_bar rubik" style="padding:0;">
+			<li class="nav-item dropdown mx-4">
+				<a class="dropdown-toggle" href="#" data-toggle="dropdown"><i class="fa fa-user"></i></a>
+				<div class="dropdown-menu dropdown-menu-left mr-auto">
+					{% if current_user.is_authenticated: %}
+						<a class="nav-item nav-link" href="{{url_for('authentication.account')}}">My account</a>
+						<a class="nav-item nav-link" href="{{url_for('authentication.logout')}}">Logout</a>
+					{% else %}
+						<a class="nav-item nav-link" href="#">Login</a>
+						<a class="nav-item nav-link" href="#">Register</a>
+					{% endif %}
+				</div>
+			</li>
+		</ul>
+	</div>
+</nav>
+</header>
+
+
+<!-- DYNAMIC SIDEBAR-->
+<div class="container-fluid">
+<div class="row" >
+
+<div class="col rubik collapse d-md-flex bg-nav sidebar" id="nav_sidebar">
+<!-- ********************************************************************************* -->
+<!-- EMPTY -->
+<ul class="nav flex-column flex-nowrap">
+	<div class="ul_all text-center nav_title" id="ul_00">
+		<img class="img-responsive" style="width:60%;opacity:0.5;padding-right:16px;"
+				src="{{url_for('static', filename='images/logo-240x240.png')}}"
+				alt="logo"/>
+	</div>	
+<!-- ********************************************************************************* -->
+<!-- HARDWARE MONITORING -->
+	<div class="ul_all" id="ul_01">
+	<li class="nav-item nav_title"><h5 class="nav-link">HARDWARE</h5></li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{url_for('hardware.monitoring')}}">Overview</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link collapsed" href="#menu1" data-toggle="collapse" data-target="#menu1">Reports</a>
+		<div class="collapse" id="menu1" aria-expanded="false">
+			<ul class="flex-column pl-2 nav">
+				<li class="nav-item"><a class="nav-link py-0" href="#">Configuration</a></li>
+				<li class="nav-item">
+					<a class="nav-link collapsed py-1" href="#menu1_1" data-toggle="collapse" data-target="#menu1_1">Visualization</a>
+					<div class="collapse" id="menu1_1" aria-expanded="false">
+						<ul class="flex-column nav pl-4">
+							
+							<li class="nav-item">
+								<a class="nav-link p-1" href="#">
+										<i class="fa fa-fw fa-dashboard"></i> Dashboard
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link p-1" href="#">
+										<i class="fa fa-fw fa-bar-chart"></i> Charts
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link p-1" href="#">
+										<i class="fa fa-fw fa-compass"></i> Areas
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link p-1" href="#">
+										<i class="fa fa-fw fa-clock-o"></i> Alerts
+								</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</li>
+	<li class="nav-item"><a class="nav-link" href="#">Analytics</a></li>
+	<li class="nav-item"><a class="nav-link" href="#">Export</a></li>
+</div>
+<!-- ********************************************************************************* -->
+<!-- ELASTICSEARCH -->
+	<div class="ul_all" id="ul_02">
+	<li class="nav-item nav_title"><h5 class="nav-link">ELASTICSEARCH</h5></li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{url_for('elastic.monitoring')}}">Overview</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link collapsed" href="#menu2" data-toggle="collapse" data-target="#menu2">Reports</a>
+		<div class="collapse" id="menu2" aria-expanded="false">
+			<ul class="flex-column pl-2 nav">
+				<li class="nav-item"><a class="nav-link py-0" href="#">Configuration</a></li>
+				<li class="nav-item">
+					<a class="nav-link collapsed py-1" href="#menu2_1" data-toggle="collapse" data-target="#menu2_1">Visualizations</a>
+					<div class="collapse" id="menu2_1" aria-expanded="false">
+						<ul class="flex-column nav pl-4">
+							
+							<li class="nav-item"><a class="nav-link p-1" href="{{url_for('elastic.kibana')}}">
+								<i class="fa fa-fw fa-dashboard"></i> Kibana
+							</a></li>
+							<li class="nav-item"><a class="nav-link p-1" href="{{url_for('elastic.d3js')}}">
+								<i class="fa fa-fw fa-bar-chart"></i> D3js
+							</a></li>
+							
+						</ul>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</li>
+	<li class="nav-item"><a class="nav-link" href="#">Analytics</a></li>
+	<li class="nav-item"><a class="nav-link" href="#">Export</a></li>
+</div>
+<!-- ********************************************************************************* -->
+<!-- SPLUNK -->
+<div class="ul_all" id="ul_03">
+	<li class="nav-item nav_title"><h5 class="nav-link">SPLUNK</h5></li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{url_for('splunk.test')}}">Connection</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{url_for('splunk.visualization')}}">Visualization</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{url_for('splunk.visualization2')}}">Visualization 2</a>
+	</li>
+</div>
+<!-- ********************************************************************************* -->
+<!-- CENTREON -->
+<div class="ul_all" id="ul_04">
+	<li class="nav-item nav_title"><h5 class="nav-link">CENTREON</h5></li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{url_for('centreon.test')}}">Overview</a>
+	</li>
+</div>
+<!-- ********************************************************************************* -->
+<!-- MICROSOFT DYNAMICS -->
+<div class="ul_all" id="ul_05">
+	<li class="nav-item nav_title"><h5 class="nav-link">MICROSOFT DYNAMICS</h5></li>
+	<li class="nav-item">
+		<a class="nav-link" href="#">Overview</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link collapsed py-1" href="#" data-toggle="collapse" data-target="#submenu5">Platforms</a>
+		<div class="collapse" id="submenu5" aria-expanded="false">
+			<ul class="flex-column nav pl-4">
+				
+				<li class="nav-item"><a class="nav-link p-1" href="#">
+					<i class="fa fa-fw fa-dashboard"></i> GP
+				</a></li>
+				<li class="nav-item"><a class="nav-link p-1" href="#">
+					<i class="fa fa-fw fa-bar-chart"></i> AX
+				</a></li>
+				
+			</ul>
+		</div>
+	</li>
+</div>
+<!-- ********************************************************************************* -->
+<!-- SPLUNK -->
+<div class="ul_all" id="ul_06">
+	<li class="nav-item nav_title"><h5 class="nav-link">EXAMPLES</h5></li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{url_for('examples.donutchart')}}">Donut Chart</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{url_for('examples.gaugechart')}}">Gauge Chart</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{url_for('examples.barchart')}}">Bar Chart</a>
+	</li>
+</div>
+
+
+</ul>
+</div>
+
+
+<!-- CONTENT -->	
+<div class="col mb-4">
+{% block form %}
+{% endblock form %}
+
+	<div class="row parallax">
+	<div class="col-md-12 my-4 text-center rubik bold content_title">
+		{% block title %}
+		{% endblock title %}
+	</div>
+	</div>
+
+
+{% block content_custom %}
+{% endblock content_custom %}
+
+<div class="row">
+	<div class="col-md-12">
+		{% with messages = get_flashed_messages(with_categories=true) %}
+			{% if messages %}
+				{% for category, message in messages %}
+					<div class="alert alert-{{ category }}">{{ message }}</div>
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+		<div class="content-section">
+			{% block content2 %}
+			{% endblock content2 %}
+		</div>
+	</div>
+
+{% block end_form %}
+{% endblock end_form %}
+
+</div>
+</div>
+
+
+{% block js_footer %}
+{% endblock js_footer %}
+
+</body>
+</html>
+
+
+
+
+

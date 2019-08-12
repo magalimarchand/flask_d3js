@@ -1,0 +1,18 @@
+{% extends "content_simple.html" %}
+
+{% block title %}
+	<h3>Kibana Embeded Dashboards</h3>
+{% endblock title %}
+
+
+{% block content %}
+
+	<div class="row">
+	<div class="col-6">
+		<iframe src="http://10.1.5.141:5601/app/kibana#/visualize/edit/48650440-50a0-11e9-a627-0d39ff00b2b5?embed=true&_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:now-2y,mode:quick,to:now))&_a=(filters:!(),linked:!f,query:(language:lucene,query:''),uiState:(vis:(colors:(Count:%230A50A1),legendOpen:!t)),vis:(aggs:!((enabled:!t,id:'1',params:(customLabel:'Website+Traffic'),schema:metric,type:count),(enabled:!t,id:'3',params:(customLabel:'IP+Addresses',field:ip.keyword,missingBucket:!f,missingBucketLabel:Missing,order:desc,orderBy:'1',otherBucket:!f,otherBucketLabel:Other,size:20),schema:group,type:terms),(enabled:!t,id:'2',params:(customLabel:'IP+Addresses',field:ip.keyword,missingBucket:!f,missingBucketLabel:Missing,order:desc,orderBy:'1',otherBucket:!f,otherBucketLabel:Other,size:20),schema:segment,type:terms)),params:(addLegend:!t,addTimeMarker:!f,addTooltip:!t,categoryAxes:!((id:CategoryAxis-1,labels:(filter:!f,rotate:0,show:!t,truncate:200),position:left,scale:(type:linear),show:!t,style:(),title:(),type:category)),grid:(categoryLines:!f,style:(color:%23eee)),legendPosition:right,seriesParams:!((data:(id:'1',label:'Website+Traffic'),drawLinesBetweenPoints:!t,mode:stacked,show:!t,showCircles:!t,type:histogram,valueAxis:ValueAxis-1)),times:!(),type:histogram,valueAxes:!((id:ValueAxis-1,labels:(filter:!t,rotate:75,show:!t,truncate:100),name:LeftAxis-1,position:bottom,scale:(mode:normal,type:linear),show:!t,style:(),title:(text:'Website+Traffic'),type:value))),title:ASTMF42_ip,type:horizontal_bar))" height="500" width="500"></iframe>
+	</div>
+	<div class="col-6">
+		<iframe src="http://10.1.5.141:5601/app/kibana#/visualize/edit/9f5f4980-bb50-11e8-bfcf-1130203284b4?embed=true&_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:now-2y,mode:quick,to:now))&_a=(filters:!(),linked:!f,query:(language:lucene,query:''),uiState:(),vis:(aggs:!((enabled:!t,id:'1',params:(customLabel:'Website+Traffic'),schema:metric,type:count),(enabled:!t,id:'2',params:(autoPrecision:!t,field:geoip.location,isFilteredByCollar:!t,precision:2,useGeocentroid:!t),schema:segment,type:geohash_grid)),params:(addTooltip:!t,heatClusterSize:1.5,isDesaturated:!f,legendPosition:bottomright,mapCenter:!(0,0),mapType:'Scaled+Circle+Markers',mapZoom:2,wms:(baseLayersAreLoaded:(),enabled:!f,options:(format:image%2Fpng,transparent:!t),selectedTmsLayer:(attribution:'%3Cp%3E%26%23169;+%3Ca+href%3D%22http:%2F%2Fwww.openstreetmap.org%2Fcopyright%22%3EOpenStreetMap%3C%2Fa%3E+contributors+%7C+%3Ca+href%3D%22https:%2F%2Fwww.elastic.co%2Felastic-maps-service%22%3EElastic+Maps+Service%3C%2Fa%3E%3C%2Fp%3E%26%2310;',id:road_map,maxZoom:18,minZoom:0,subdomains:!(),url:'https:%2F%2Ftiles.maps.elastic.co%2Fv2%2Fdefault%2F%7Bz%7D%2F%7Bx%7D%2F%7By%7D.png%3Felastic_tile_service_tos%3Dagree%26my_app_name%3Dkibana%26my_app_version%3D6.3.0%26license%3D345b8da6-0268-49d4-9511-9cf85f85dcb4'),tmsLayers:!((attribution:'%3Cp%3E%26%23169;+%3Ca+href%3D%22http:%2F%2Fwww.openstreetmap.org%2Fcopyright%22%3EOpenStreetMap%3C%2Fa%3E+contributors+%7C+%3Ca+href%3D%22https:%2F%2Fwww.elastic.co%2Felastic-maps-service%22%3EElastic+Maps+Service%3C%2Fa%3E%3C%2Fp%3E%26%2310;',id:road_map,maxZoom:18,minZoom:0,subdomains:!(),url:'https:%2F%2Ftiles.maps.elastic.co%2Fv2%2Fdefault%2F%7Bz%7D%2F%7Bx%7D%2F%7By%7D.png%3Felastic_tile_service_tos%3Dagree%26my_app_name%3Dkibana%26my_app_version%3D6.3.0%26license%3D345b8da6-0268-49d4-9511-9cf85f85dcb4')))),title:ASTMF42_geomap,type:tile_map))" height="500" width="500"></iframe>
+	</div>
+	</div>
+{% endblock content %}
